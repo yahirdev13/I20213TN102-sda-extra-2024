@@ -46,5 +46,18 @@ public class CarritoController {
         }
     }
 
+    @GetMapping("/Total/")
+    public ResponseEntity<CustomResponse> getTotal(){
+        try{
+            return ResponseEntity.ok(carritoService.getAll());
+        }catch (Exception  e){
+            return ResponseEntity.status(500).body(
+                    new CustomResponse<>(
+                            null, false, 500, "Error interno del servidor"
+                    )
+            );
+        }
+    }
+
 
 }
